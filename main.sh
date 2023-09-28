@@ -1,14 +1,16 @@
+#! /bin/bash
+
 # Clone Upstream
 git clone https://github.com/atar-axis/xpadneo -b v0.9.5
 cp -rvf ./debian ./xpadneo
 cd ./xpadneo
+for i in ../patches/* ; do patch -Np1 -i $i; done
 
 # Get build deps
 apt-get build-dep ./ -y
 
 # Build package
-LOGNAME=root dh_make --createorig -y -l -p xpadneo_0.9.5
-dpkg-buildpackage
+dpkg-buildpackage --no-sign
 
 # Move the debs to output
 cd ../
