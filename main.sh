@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Clone Upstream
-git clone https://github.com/atar-axis/xpadneo -b v0.9.5
+git clone https://github.com/atar-axis/xpadneo -b v0.9.6
 cp -rvf ./debian ./xpadneo
 cd ./xpadneo
 for i in ../patches/* ; do patch -Np1 -i $i; done
